@@ -1,0 +1,5 @@
+﻿LAPORAN MUTASI DAN TRANSAKSI STOK - SMARTSTOCK PRO
+Tanggal Cetak: 27/5/2026, 16.10.52
+
+Kode Transaksi,SKU,Nama Produk,Gudang Asal,Gudang Tujuan,Kuantitas,Tipe,Status,Operator,Waktu
+"TRF-1779857116752-681","CO-LAP-001","ASUS ROG Zephyrus G14","Gudang Jakarta","Gudang Bandung",12,"TRANSFER","COMPLETED","Super Administrator","2026-05-27 04:45:16"

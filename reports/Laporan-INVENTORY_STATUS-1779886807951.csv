@@ -1,0 +1,20 @@
+﻿LAPORAN STATUS INVENTARIS REAL-TIME - SMARTSTOCK PRO
+Tanggal Cetak: 27/5/2026, 20.00.08
+
+SKU,Nama Produk,Kategori,Supplier,Harga Jual (Rp),Stok Minimum,Gudang,Stok Saat Ini,Nilai Aset HPP (Rp)
+"CO-LAP-001","ASUS ROG Zephyrus G14","Komputer & Laptop","PT Indo Elektronik",25000000,5,"Gudang Bandung",12,264000000
+"EL-LAP-001","Iphone 14 Pro Max","Elektronik Rumah Tangga","PT Indo Elektronik",13500000,10,"Gudang Bandung",30,360000000
+"CO-LAP-001","ASUS ROG Zephyrus G14","Komputer & Laptop","PT Indo Elektronik",25000000,5,"Gudang Jakarta",63,1416000000
+"CO-LAP-002","Carbon","Elektronik Rumah Tangga","PT Indo Elektronik",22000000,10,"Gudang Jakarta",24,422400000
+"CO-MON-001","Monitor","Elektronik Rumah Tangga","PT Indo Elektronik",5500000,7,"Gudang Jakarta",16,70400000
+"EL-AC-001","PK","Elektronik Rumah Tangga","PT Indo Elektronik",3800000,10,"Gudang Jakarta",30,91200000
+"EL-REF-001","2-Door","Elektronik Rumah Tangga","PT Indo Elektronik",4500000,5,"Gudang Jakarta",12,43200000
+"EL-TV-001","Samsung Smart TV 55 QLED","Elektronik Rumah Tangga","PT Indo Elektronik",7500000,10,"Gudang Jakarta",24,156000000
+"PH-PHN-001","iPhone 15 Pro Max 256GB","Smartphone & Aksesoris","PT Indo Elektronik",18500000,8,"Gudang Jakarta",75,1200000000
+"PH-PHN-002","Ultra","Elektronik Rumah Tangga","PT Indo Elektronik",19000000,8,"Gudang Jakarta",40,608000000
+"CO-LAP-002","Carbon","Elektronik Rumah Tangga","PT Indo Elektronik",22000000,10,"Gudang Surabaya",10,176000000
+"CO-MON-001","Monitor","Elektronik Rumah Tangga","PT Indo Elektronik",5500000,7,"Gudang Surabaya",20,88000000
+"EL-AC-001","PK","Elektronik Rumah Tangga","PT Indo Elektronik",3800000,10,"Gudang Surabaya",44,133760000
+"EL-REF-001","2-Door","Elektronik Rumah Tangga","PT Indo Elektronik",4500000,5,"Gudang Surabaya",16,57600000
+"EL-TV-001","Samsung Smart TV 55 QLED","Elektronik Rumah Tangga","PT Indo Elektronik",7500000,10,"Gudang Surabaya",60,384000000
+"PH-PHN-002","Ultra","Elektronik Rumah Tangga","PT Indo Elektronik",19000000,8,"Gudang Surabaya",30,456000000
