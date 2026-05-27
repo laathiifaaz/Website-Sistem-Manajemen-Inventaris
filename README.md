@@ -4,4 +4,6 @@ Sistem ini dibangun untuk mengatasi masalah manajemen inventaris utama seperti p
 ## Documentation
 The project report and supporting documentation can be found in the `docs/` folder.
 
+## Github Repository
+https://github.com/laathiifaaz/Website-Sistem-Manajemen-Inventaris
 -- Lathiifa Zahira Yahya G6401231154
