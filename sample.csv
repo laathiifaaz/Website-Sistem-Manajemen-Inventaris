@@ -1,0 +1,6 @@
+sku,name,category,supplier,price,min_stock,qty_jakarta,qty_surabaya
+CO-LAP-002,Lenovo ThinkPad X1 Carbon,Komputer & Laptop,PT Global Tech Indonesia,22000000,10,12,5
+PH-PHN-002,Samsung Galaxy S24 Ultra,Smartphone & Aksesoris,PT Indo Elektronik,19000000,8,20,15
+EL-REF-001,Sharp Refrigerator 2-Door,Elektronik Rumah Tangga,PT Indo Elektronik,4500000,5,6,8
+EL-AC-001,Daikin AC Split 1 PK,Elektronik Rumah Tangga,PT Indo Elektronik,3800000,10,15,22
+CO-MON-001,Dell UltraSharp 27 Monitor,Komputer & Laptop,PT Global Tech Indonesia,5500000,7,8,10
