@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartStock Pro - PT Maju Bersama Digital</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div id="login-view" class="login-container">
+    <div class="login-card glass-panel animate-fade-in">
+      <div class="login-header">
+        <h1 class="brand-title">SmartStock Pro</h1>
+        <p class="brand-subtitle">SISTEM MANAJEMEN INVENTARIS REAL-TIME</p>
+      </div>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-username">USERNAME</label>
+          <input type="text" id="login-username" class="input-cyber" placeholder="Masukkan username..." required autocomplete="off">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="login-password">PASSWORD</label>
+          <input type="password" id="login-password" class="input-cyber" placeholder="••••••••" required>
+        </div>
+        
+        <div id="login-error" style="color: var(--color-danger); font-size: 0.85rem; margin-bottom: 20px; text-align: left; display: none;">
+          <i class="fa-solid fa-triangle-exclamation"></i> Username atau password salah.
+        </div>
+
+        <button type="submit" class="btn-cyber btn-primary">
+          MASUK KE SISTEM
+        </button>
+      </form>
+    </div>
+
+    <div class="login-footer">
+      © 2024 PT Maju Bersama. All rights reserved.
+    </div>
+  </div>
+
+  <div id="app-view" class="app-container" style="display: none;">
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <h2><i class="fa-solid fa-cubes-stacked" style="color: var(--color-primary);"></i> SmartStock</h2>
+      </div>
+      
+      <nav style="flex-grow: 1;">
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link active" data-view="dashboard">
+              <i class="fa-solid fa-chart-line"></i> Dashboard
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" data-view="products">
+              <i class="fa-solid fa-boxes-stacked"></i> Produk CRUD
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" data-view="transfers">
+              <i class="fa-solid fa-shuffle"></i> Transfer Paralel
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" data-view="import">
+              <i class="fa-solid fa-file-import"></i> Batch Import CSV
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" data-view="reports">
+              <i class="fa-solid fa-file-lines"></i> Ekspor Laporan
+            </a>
+          </li>
+          <li class="admin-only" style="display: none;">
+            <a class="sidebar-link" data-view="logs">
+              <i class="fa-solid fa-shield-halved"></i> Audit Security
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div id="user-avatar" class="user-avatar">A</div>
+          <div class="user-info">
+            <span id="user-display-name" class="user-name">Pengguna</span>
+            <span id="user-display-role" class="user-role">Staf</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn-cyber btn-secondary" style="padding: 8px 16px; font-size: 0.8rem; margin-top: 10px;">
+          <i class="fa-solid fa-power-off"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-viewport">
+      
+      <div class="top-bar">
+        <div class="page-title">
+          <h1 id="page-title-text">Dashboard</h1>
+          <p id="page-subtitle-text">Selamat datang di SmartStock Pro Command Center.</p>
+        </div>
+        <div class="glass-panel" style="padding: 10px 20px; display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-success); box-shadow: 0 0 8px var(--color-success);"></span>
+          <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Sync Active</span>
+        </div>
+      </div>
+
+      <div id="page-content" class="animate-fade-in">
+        </div>
+      
+    </main>
+  </div>
+
+  <div id="crud-modal" class="modal-overlay">
+    <div class="modal-content glass-panel">
+      <h3 id="modal-title" style="margin-bottom: 24px; font-weight: 800; font-size: 1.3rem;">Modal Title</h3>
+      <form id="crud-form" enctype="multipart/form-data">
+        <input type="hidden" id="form-product-id">
+        
+        <div class="form-group">
+          <label class="form-label" for="form-sku">SKU Produk</label>
+          <input type="text" id="form-sku" class="input-cyber" placeholder="Contoh: EL-LAP-001" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="form-name">Nama Barang</label>
+          <input type="text" id="form-name" class="input-cyber" placeholder="Contoh: ASUS Zenbook 14" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="form-category">Kategori</label>
+            <select id="form-category" class="input-cyber" required style="appearance: none; cursor: pointer;"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form-supplier">Supplier Utama</label>
+            <select id="form-supplier" class="input-cyber" required style="appearance: none; cursor: pointer;"></select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="form-min-stock">Stok Minimum</label>
+            <input type="number" id="form-min-stock" class="input-cyber" placeholder="10" required min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form-price">Harga Jual (Rp)</label>
+            <input type="number" id="form-price" class="input-cyber" placeholder="1500000" required min="1">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-desc">Deskripsi Produk</label>
+          <textarea id="form-desc" class="input-cyber" style="resize: none; height: 80px;" placeholder="Tulis catatan singkat produk..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-image">Foto Produk</label>
+          <input type="file" id="form-image" class="input-cyber" accept="image/*" style="padding: 8px; font-size: 0.85rem; cursor: pointer;">
+        </div>
+        <div style="display: flex; gap: 16px; margin-top: 24px;">
+          <button type="button" id="close-modal-btn" class="btn-cyber btn-secondary">Batal</button>
+          <button type="submit" class="btn-cyber btn-primary">Simpan Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="timeout-modal" class="modal-overlay">
+    <div class="modal-content glass-panel" style="max-width: 380px; text-align: center;">
+      <i class="fa-solid fa-clock-rotate-left" style="font-size: 3rem; color: var(--color-warning); margin-bottom: 16px; text-shadow: 0 0 10px rgba(var(--color-warning), 0.3);"></i>
+      <h3 style="margin-bottom: 8px; font-weight: 800;">Sesi Hampir Berakhir</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Sesi Anda akan kedaluwarsa secara otomatis dalam 1 menit karena tidak ada aktivitas. Apakah Anda ingin memperpanjang?</p>
+      <button id="extend-session-btn" class="btn-cyber btn-primary">Lanjutkan Bekerja</button>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
